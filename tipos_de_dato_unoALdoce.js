@@ -334,14 +334,251 @@ console.log(typeof sinValor);
 console.log('        ');
 console.log("************************* PRIMITIVOS: NaN  ***************");
 console.log('        ');
-
-
 //Nan = not a number
 
 // Haces operaciones donde alguno no es un num
-
 let noEsNumero ="hola"*1
 console.log(noEsNumero);
+
+
+
+
+console.log("************************ Tipos de datos: COMPUESTOS **********************");
+console.log('        ');
+
+// COMPUESTOS: Se accede a la referencia del valor.
+// object = {}
+// array = []
+// function () { }
+// Class {}
+// etc.
+console.log("************************ Funciones : COMPUESTOS **********************");
+console.log('        ');
+
+// Lo podes declarar una sola vez y reutilizarlo
+// Puede o no recibir parametros y puede o no devolver valores.
+// Las funciones tambien se consideran objectos
+// Son de primera clase. 
+
+// ***** Ejemplo:
+console.log('**Funcion declarada**');
+
+function nombreFuncion() {
+    console.log('uno');
+    console.log('dos');
+    console.log('tres');
+}
+
+nombreFuncion // No pasa nada 
+nombreFuncion() // al poner () se activa la funcion
+
+
+//***** Ejemplo: Funcion que devuelve valor
+console.log(' ');
+function fn_devuelve_unValor(){
+    console.log('Soy el string');
+    return "La funcion devuelve strings "
+}
+
+fn_devuelve_unValor() // Solo devuelve el  "Soy el string"
+// Para que te devuelva todo tenes que hacer una variable y guardar el valor de la funcion
+console.log('     ');
+
+
+let valorDeFuncion = fn_devuelve_unValor();
+console.log(valorDeFuncion);
+console.log('     ');
+
+
+// **** Ejemplo:
+function funcion1(){
+    console.log('primer string');
+    return "Se termina aca, ignora el resto"
+    console.log('Soy el string');
+    return "La funcion devuelve strings "
+}
+let valorFuncion1 = funcion1()
+
+console.log(valorFuncion1);
+
+
+// **** Ejemplo
+console.log('     ');
+console.log('**Funcion que recibe valores**');
+
+function saludar(nombre,edad){
+    console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`);
+}
+saludar("Soraya",29); 
+
+
+// ***Ejemplo 2
+function saludar1(nombre,edad){
+    console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`);
+}
+saludar1() // Si no pones los paramatros: "Hola mi nombre es undefined y tengo undefined años"
+
+
+// Lo que podes hacer es: 
+function saludar2(nombre="Desconocido",edad= 0){
+    console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`);
+}
+saludar2() //Hola mi nombre es Desconocido y tengo 0 años
+
+
+
+console.log('      ');
+// **** Ejemplo hoisting o elevacion de las variables/funciones
+// Js es un lenguaje interpretado, no necisita una etapa de compresion: mientras ejecuta el codigo lo interpreta
+
+funcionDeclarar()                     // Invocaste la funcion ANTES de declararla
+
+function funcionDeclarar (){
+    console.log('Ejecuto funcion');
+}
+
+funcionDeclarar() // Se ejecuta este y el de la linea 434
+// Independiente de donde declares la funcion, va elevar la funcion (hoisting) y no sale error.
+
+
+
+
+
+console.log('  ');
+console.log('Funciones expresadas ');
+// **** Funciones anonimas (no tienen nombre)
+
+// funcionExpresada() //ReferenceError: Cannot access 'funcionExpresada' before initialization
+
+const funcionExpresada = function(){
+    console.log('Esto es una funcion expresada, es decir una funcion que se le ha asignado como valor a una variable, si invocamos esta funcion antes de su definicion JS nos tira error');
+}
+
+funcionExpresada()
+
+
+
+
+
+
+
+//************************************************************************ */
+console.log('  ');
+console.log('ARREGLOS (ARRAYS): Complejos ');
+// Un arreglo es una coleccion de elementos, incluso objetos.
+
+const corchete = []; // array vacio
+const unArray =[1,true,"hola",["a","b","c"]] // Los arreglos empiezan en la posicion 0
+console.log(corchete);
+
+console.log(unArray.length);
+
+// Si queres acceder solo al hola
+console.log(unArray[2]);
+console.log(unArray[3][0]);  // Tomas el a, del array anidado
+
+
+// **** Otra forma
+const array = Array.of("X","Y","Z",9,8,7)
+console.log(array);
+
+// *** Otra forma
+
+const array1 = Array(100).fill(false)
+console.log(array1);
+
+
+// ** METODOS de ARRAYS
+
+const colores = ["Rojo","Verde","Azul"]
+console.log(colores);
+// .push                  Agrega un valor a lo ultimo
+colores.push("Negro")
+console.log(colores);
+
+// .pop                   Quita el ultimo valor
+colores.pop()
+console.log(colores);
+
+console.log('   ');
+// .forEach
+colores.forEach(function(elemento_iterando){               // Iteras los colores del array.
+    console.log(`<li> ${elemento_iterando} </li>`);         // usas template strings
+})
+
+console.log('   ');
+// Podes hacer además que cada elemento tenga una id única.
+colores.forEach(function(elemento_iterando, index){                //
+    console.log(`<li id="${index}"> ${elemento_iterando} </li>`);         //  
+})
+
+
+
+
+//************************************************************************ */
+console.log('  ');
+console.log('OBJETOS: Complejos ');
+// Es una coleccion de pares llave/valor
+// Es como si estuvieras en CSS :)
+
+const yo= {
+    nombre: "Soraya",
+    apellido: "Perez",
+    edad: 24,
+    estado: "soltera",
+    pasatiempos: ["musica", "Netflix","pin pon","ejercicio"],       // Tiene un array!
+    contacto: {                                                     // Tiene otro objeto!!
+        email: "perezsorayam@gmail.com", 
+        instagram: "no me lo acuerdo",
+        celular: 112233354
+    },
+    saludar5: function(){
+        console.log('hola')
+    },
+    decirMiNombre:function(){
+        console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} años y me podes seguir en ${this.contacto.email} `)   // this = este = el contexto en donde nos encontramos. Hace referencia al mismo objeto
+    }
+}
+
+console.log(yo);
+console.log(yo["pasatiempos"]); //accedes a tu objeto
+console.log(yo.edad); //Buena practica
+console.log(yo.pasatiempos[2]);
+console.log(yo.contacto.instagram);
+yo.saludar5
+yo.decirMiNombre()
+
+// Saludar al ser una funcion NO es un atributo, si un METODO
+// El resto si son atributos de tu objeto "yo"
+
+
+//+++++ Dentro de un objeto a las variables se le van a llamar atributos/propiedades
+// ++++ A las funciones se las llama METODOS
+
+/// Cuando queres hacer uso de una propiedad dentro de un objeto usas this
+
+
+
+
+//*********************************** */
+console.log('  ');
+console.log('OBJETOS: METODOS ');
+
+// .keys                           te lista los atributos de tu objeto
+console.log(Object.keys(yo));
+
+// .values                         te lista los valores de los atributos de tu objeto
+console.log(Object.values(yo));
+
+// hasOwnProperty
+console.log(yo.hasOwnProperty("nombre")); // Evalua si la propiedad se encuentra dentro de tu objeto
+
+
+
+
+// console.log("************************ OBJECT: Compuestos **********************");
+// console.log('        ');
+
 
 
 
@@ -413,3 +650,19 @@ console.log(noEsNumero);
 
 // let comparacion5 = (2 > 2 ) || ( 2 == 2) /* ||  es O se tiene que cumplir 1 SOLA*/ 
 // console.log(comparacion5);
+
+
+
+
+
+
+
+
+
+// cada tipo de dato tiene METODOS que son acciones que te permiten hacer cosas con ese dato
+// Un prompt es un metodo
+
+// Cuando peddis el valor de una variable con prompt y consolelog, el tipo de valor es string, a pesar que respondas con un nº
+
+// let dni = parseInt(prompt("decime tu dni"))
+// console.log(typeof dni)
