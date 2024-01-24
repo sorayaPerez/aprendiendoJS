@@ -1,6 +1,5 @@
 // ATAJOS
 
-
 //   60  <> 62
 //   91 [ ] 93
 // ` 96
@@ -11,6 +10,5 @@
 
 
 // parseInt en los prompts
-
 
 // Usar a === b asi hay mas especificidad
